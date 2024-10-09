@@ -20,8 +20,30 @@ public class BookService {
 	}
 
 	public AuthorDetails getById(int aid) {
-		
 		return br.findAllById(aid);
 	}
+
+	public String insertauthor(AuthorDetails ad) {
+		br.save(ad);
+		return "successfully Added";
+	}
+
+	public String deleteauthor(int aid) {
+		
+		br.delete(br.findAllById(aid));
+		return "Successfully deleted";
+	}
+
+	public String updateauthor(int aid, AuthorDetails a) {
+		AuthorDetails ad = br.findAllById(aid);
+		
+		if(ad != null)
+		{
+			br.save(a);
+			return "Succesfully Updated!";
+		}
+		return "Not Successfull";
+	}
+
 	
 }
